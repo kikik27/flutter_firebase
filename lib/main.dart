@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_learn/container_injection.dart';
+import 'container_injection.dart' as di;
 import 'package:firebase_learn/core/colors/color_data.dart';
 import 'package:firebase_learn/core/routes/app_router.dart';
 import 'package:firebase_learn/core/routes/router_dependencies.dart';
@@ -14,7 +15,7 @@ void main() async {
   await initializeDateFormatting('id_ID', null);
   DartPluginRegistrant.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
+  await di.init();
   dotenv.load(fileName: '.env');
   await Firebase.initializeApp();
   setupRouterDependencies();

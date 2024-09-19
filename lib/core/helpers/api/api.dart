@@ -16,7 +16,6 @@ class Api {
     } else {
       var dio = Dio(
         BaseOptions(
-            headers: {"Accept": "application/json", "device": "mobile"},
             baseUrl: dotenv.env['BASE_API_URL'].toString(),
             receiveTimeout: const Duration(seconds: 45),
             connectTimeout: const Duration(seconds: 250),

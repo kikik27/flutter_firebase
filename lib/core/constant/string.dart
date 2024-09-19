@@ -18,9 +18,13 @@ class SharedPrefKeys {
 
 class ApiEndPoints {
   //Auth
-  static const loginApiUrl = "auth/login/";
+  static const loginApiUrl = "auth/login";
+  static const profileApiUrl = "auth/me";
   static const verifyOTPApiUrl = "auth/verify_otp/";
   static const resendOTPApiUrl = "auth/resend_otp/";
+
+  //users
+  static const listUserApiUrl = "api/v1/users/";
 
   //master data
   static const listUnitAssetUrl = "api/v1/assets/master_data/";

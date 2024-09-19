@@ -41,7 +41,6 @@ class ApiService {
     if (token != null && token.isNotEmpty) {
       api.dio.options.headers[HttpHeaders.authorizationHeader] =
           "Bearer $token";
-      api.dio.options.headers["device"] = "mobile";
       api.dio.options.headers[HttpHeaders.contentTypeHeader] =
           "application/json";
     } else {

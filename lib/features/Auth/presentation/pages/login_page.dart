@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:gap/gap.dart';
 
 @RoutePage()
 class LoginPage extends StatefulWidget {
@@ -50,15 +51,25 @@ class _LoginPagesState extends State<LoginPage> {
                       borderSide: BorderSide(color: ColorData.grey500),
                     )),
                 validator: FormBuilderValidators.compose([
-                  FormBuilderValidators.email(),
                   FormBuilderValidators.required()
                 ]),
               ),
+              const Gap(8),
               FormBuilderTextField(
                 name: 'password',
-                decoration: const InputDecoration(
-                  labelText: 'Password',
-                ),
+                decoration: InputDecoration(
+                    hintText: 'Password',
+                    hintStyle: AppTheme.textStyle.textSMRegular
+                        .copyWith(color: ColorData.grey500),
+                    prefixIcon:
+                        const Icon(Icons.lock, color: ColorData.grey700),
+                    prefixIconColor: ColorData.grey200,
+                    focusedBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: ColorData.grey500),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide: BorderSide(color: ColorData.grey500),
+                    )),
                 validator: FormBuilderValidators.required(),
                 obscureText: true,
               ),

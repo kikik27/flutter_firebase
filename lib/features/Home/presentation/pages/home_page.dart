@@ -22,9 +22,9 @@ class _HomePageState extends State<HomePage> {
         BlocProvider(
           create: (context) => sl<AuthBloc>()..add(const CheckLoggedInEvent()),
         ),
-        BlocProvider(
-          create: (context) => sl<UsersBloc>(),
-        ),
+        // BlocProvider(
+        //   create: (context) => sl<UsersBloc>()..add(const GetUserEvent()),
+        // ),
       ],
       child: Builder(builder: (context) {
         return Scaffold(
@@ -50,15 +50,18 @@ class _HomePageState extends State<HomePage> {
                   margin: const EdgeInsets.only(top: 100),
                   child: Column(
                     children: [
-                      const Text("Welcome"),
+                      // BlocBuilder<UsersBloc, UsersState>(
+                      //   builder: (context, state) {
+                      //     return Text("$state");
+                      //   },
+                      // ),
                       const SizedBox(height: 16),
-                      Text(state.user.email ?? ""),
+                      Text(state.user?.email ?? ""),
                       const SizedBox(height: 16),
                       ElevatedButton(
                           onPressed: () {
-                            BlocProvider.of<UsersBloc>(context).add(
-                                const GetUserEvent(
-                                    userId: 'bHY5hRiWzDNDTqxMENUpQ44YzoI3'));
+                            BlocProvider.of<AuthBloc>(context)
+                                .add(const AuthSignOut());
                           },
                           child: const Text("Logout"))
                     ],

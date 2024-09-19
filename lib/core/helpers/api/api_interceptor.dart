@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:firebase_learn/core/constant/string.dart';
+import 'package:firebase_learn/core/helpers/logger.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class ApiInterceptors extends Interceptor {
@@ -16,7 +17,6 @@ class ApiInterceptors extends Interceptor {
   );
 
   @override
-
   void onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
     options.headers["Content-Type"] =
@@ -26,15 +26,16 @@ class ApiInterceptors extends Interceptor {
     options.validateStatus = (status) => true;
 
     var accessToken = await storage.read(key: SharedPrefKeys.tokenKey);
-  /// The [RequestInterceptorHandler.next] method is called with the modified
-  /// [RequestOptions] object after the headers have been added.
+
+    /// The [RequestInterceptorHandler.next] method is called with the modified
+    /// [RequestOptions] object after the headers have been added.
     if (options.uri.path.contains("validate-otp")) {
       accessToken = await storage.read(key: SharedPrefKeys.tokenKey);
     }
 
     if (accessToken != null) {
+      logger.i(accessToken);
       options.headers[HttpHeaders.authorizationHeader] = "Bearer $accessToken";
-      options.headers["device"] = "mobile";
     }
 
     return handler.next(options);

@@ -8,10 +8,8 @@ abstract class UsersEvent extends Equatable {
 }
 
 class GetUserEvent extends UsersEvent {
-  final String userId;
-
-  const GetUserEvent({required this.userId});
+  const GetUserEvent();
 
   @override
-  List<Object> get props => [userId];
+  List<Object> get props => [];
 }

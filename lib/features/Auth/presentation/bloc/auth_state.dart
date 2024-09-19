@@ -26,6 +26,7 @@ class AuthError extends AuthState {
 }
 
 class Authenticated extends AuthState {
-  final User user;
-  const Authenticated({required this.user});
+  final User? user;
+  final bool? isAuth;
+  const Authenticated({required this.user, required this.isAuth});
 }

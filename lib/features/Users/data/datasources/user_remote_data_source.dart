@@ -15,8 +15,9 @@ class UserRemoteDataImpl implements UserRemoteDataSource {
   @override
   Future<List<UserEntity>> getUserRemoteData() async {
     try {
-      final response = await dio.get(ApiEndPoints.buildingLocationApiUrl);
+      final response = await dio.get(ApiEndPoints.listUserApiUrl);
       if (response.statusCode == 200) {
+        
         final res = response.data["data"];
         return res;
       } else {
